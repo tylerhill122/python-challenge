@@ -30,8 +30,14 @@ with open(csvpath) as csvfile:
         revenue.append(row[1])
         # count number of months in months list
         months = len(date)
+        total_sum = sum_revenue(revenue)
         
-print(f'The amount of months present is {months} and the sum of revenue is {sum_revenue(revenue)}')
+print(
+    "Financial Anaylsis \n"
+    "------------------------------ \n"
+    f'Total Months: {months} \n'
+    f'Total: {total_sum} \n'
+    )
         
     # print(months)
     # print(profit)
