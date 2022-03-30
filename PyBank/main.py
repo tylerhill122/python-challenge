@@ -4,9 +4,18 @@ import csv
 csvpath = os.path.join('Resources', 'budget_data.csv')
 
 date = []
-profit = []
+revenue = []
+
+
 
 with open(csvpath) as csvfile:
+    
+    def sum_revenue(csvreader):
+        total = 0
+        for row in csvreader:
+            total = int(total) + int(row)
+        return total
+    
     csvreader = csv.reader(csvfile, delimiter=',')
     # print(csvreader)
     
@@ -15,9 +24,13 @@ with open(csvpath) as csvfile:
     
     for row in csvreader:
         date.append(row[0])
-        profit.append(row[1])
+        revenue.append(row[1])
         months = len(date)
-    print(months)
+        
+print(sum_revenue(revenue))
+        
+    # print(months)
+    # print(profit)
         
         
 
