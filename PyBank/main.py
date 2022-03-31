@@ -15,7 +15,7 @@ with open(csvpath) as csvfile:
         total = 0
         for row in csvreader:
             total = int(total) + int(row)
-        return total
+        return total      
     
     # Declares how the csv file should be read
     csvreader = csv.reader(csvfile, delimiter=',')
@@ -29,18 +29,17 @@ with open(csvpath) as csvfile:
         date.append(row[0])
         revenue.append(row[1])
         # count number of months in months list
-        months = len(date)
-        total_sum = sum_revenue(revenue)
+
+months = len(date)
+total_sum = sum_revenue(revenue)
         
 print(
     "Financial Anaylsis \n"
     "------------------------------ \n"
     f'Total Months: {months} \n'
     f'Total: {total_sum} \n'
+    f'{date} \n'
     )
         
     # print(months)
     # print(profit)
-        
-        
-
