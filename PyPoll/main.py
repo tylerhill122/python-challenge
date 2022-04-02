@@ -19,18 +19,23 @@ with open(csvpath) as csvfile:
         county.append(col[1]) 
         pol.append(col[2])
 
+# Define function for candidates that received votes
 def unique(pol):
     for i in pol:
         if i not in unique_pol:
             unique_pol.append(i)
-
-num_votes = len(ballot)
 unique(pol)
 
+# Count ballots to find total number of votes cast
+num_votes = len(ballot)
+
+# Declare values for total number of votes received for each candidate
 v1 = pol.count("Charles Casper Stockham")
 v2 = pol.count("Diana DeGette")
 v3 = pol.count("Raymon Anthony Doane")
 
+# Find percentage of the vote received
+# Secondary formatted value to truncate decimals
 pv1 = (int(v1) / int(num_votes)) * 100
 pvf1 = "{:.3f}".format(pv1)
 pv2 = (int(v2) / int(num_votes)) * 100
@@ -38,6 +43,21 @@ pvf2 = "{:.3f}".format(pv2)
 pv3 = (int(v3) / int(num_votes)) * 100
 pvf3 = "{:.3f}".format(pv3)
 
+vote_count = {
+    "Charles Casper Stockham": v1,
+    "Diana DeGette": v2,
+    "Raymon Anthony Doane": v3
+}
+
+# def winner(vote_count):
+#     for x, y in vote_count.items():
+#         if y == max(vote_count):
+#             return x
+
+# winner(vote_count)
+# print(winner(vote_count))
+
+# Print Results
 print(f'Election Results \n'
       f'------------------------------------- \n'
       f'Total Votes Cast: {num_votes} \n'
