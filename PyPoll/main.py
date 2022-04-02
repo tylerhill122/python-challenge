@@ -49,23 +49,22 @@ vote_count = {
     "Raymon Anthony Doane": v3
 }
 
-# def winner(vote_count):
-#     for x, y in vote_count.items():
-#         if y == max(vote_count):
-#             return x
+winning_vote = max(vote_count.values())
 
-# winner(vote_count)
-# print(winner(vote_count))
+for key, value in vote_count.items():
+    if value == winning_vote:
+        winner = key
 
 # Print Results
 print(f'Election Results \n'
       f'------------------------------------- \n'
       f'Total Votes Cast: {num_votes} \n'
+      f'------------------------------------- \n'
       f'Candidates Receving Votes: \n\n'
       f'{unique_pol[0]}:  {float(pvf1)}%  ({v1}) \n'
       f'{unique_pol[1]}:            {float(pvf2)}%  ({v2})\n'
       f'{unique_pol[2]}:      {float(pvf3)}%  ({v3})\n'
       )
 print(f'------------------------------------- \n'
-      f'Winner:'
+      f'Winner:     {winner}'
       )
