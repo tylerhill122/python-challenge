@@ -1,8 +1,6 @@
 import os
 import csv
 
-from numpy import average
-
 csvpath = os.path.join('Resources', 'budget_data.csv')
 
 # Defining lists to store values
