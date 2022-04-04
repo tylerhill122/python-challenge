@@ -65,7 +65,7 @@ print(print_statement)
 
 # Print results to txt file
 # Declare output file
-output = os.path.join('Resources', 'budget_summarized.txt')
+output = os.path.join('Analysis', 'budget_summarized.txt')
 # Open file with correct permissions
 file = open(output, "w")
 # Write file
