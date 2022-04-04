@@ -56,8 +56,8 @@ for key, value in vote_count.items():
     if value == winning_vote:
         winner = key
 
-# Print Results
-print(f'Election Results \n'
+# Declare print statement as string
+print_statement = str(f'Election Results \n'
       f'------------------------------------- \n'
       f'Total Votes Cast: {num_votes} \n'
       f'------------------------------------- \n'
@@ -65,7 +65,19 @@ print(f'Election Results \n'
       f'{unique_pol[0]}:  {float(pvf1)}%  ({v1}) \n'
       f'{unique_pol[1]}:            {float(pvf2)}%  ({v2})\n'
       f'{unique_pol[2]}:      {float(pvf3)}%  ({v3})\n'
-      )
-print(f'------------------------------------- \n'
-      f'Winner:     {winner}'
-      )
+      f'------------------------------------- \n'
+      f'Winner:     {winner} \n'
+      f'------------------------------------- \n'
+)
+# Print Results to terminal
+print(print_statement)      
+
+# Print Results to text file
+# Declare output file
+output = os.path.join('Resources', 'election_results.txt')
+# Open file with correct permissions
+file = open(output, "w")
+# Write file
+file.write(
+    print_statement
+)
