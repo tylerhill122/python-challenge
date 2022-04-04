@@ -49,6 +49,7 @@ for i in range(len(profit_history)-1):
     elif profit_history[i] == max:
         max_date = date[i+1]
        
+# Print results to terminal
 print(
     "------------------------------ \n"
     "Financial Anaylsis \n"
@@ -59,3 +60,18 @@ print(
     f'Greatest Increase in Profits: {max_date} (${max}) \n'
     f'Greatest Decrease in Profits: {min_date} (${min}) \n'
     )
+
+# Print results to txt file
+# Declare output file
+output = os.path.join('Resources', 'budget_summarized.txt')
+file = open(output, "w")
+file.write(
+    "------------------------------ \n"
+    "Financial Anaylsis \n"
+    "------------------------------ \n"
+    f'Total Months: {months} \n'
+    f'Total: ${total_sum} \n'
+    f'Average Change: ${total_change_f} \n'
+    f'Greatest Increase in Profits: {max_date} (${max}) \n'
+    f'Greatest Decrease in Profits: {min_date} (${min}) \n' 
+)
