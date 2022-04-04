@@ -26,7 +26,7 @@ with open(csvpath) as csvfile:
     for row in csvreader:
         date.append(row[0])
         revenue.append(row[1]) 
-
+# populate profit_history list, tracking change by month over time
 for i in range(len(revenue) - 1):
     change = int(revenue[i+1]) + (0 - int(revenue[i]))
     profit_history.append(change)
@@ -34,14 +34,18 @@ for i in range(len(revenue) - 1):
 endtime = (len(revenue)) - 1
 months = len(date)
 
+#calculate total change
 change = int(revenue[int(endtime)]) - int(revenue[0])
 total_change = change / endtime
+#format response to 2 decimal
 total_change_f = "{:.2f}".format(total_change)
 
+#greatest increase and decrease and total sum
 min = min(profit_history)
 max = max(profit_history)
 total_sum = sum_revenue(revenue)
 
+#finding the dates corresponding to the greatest increase / decrease
 for i in range(len(profit_history)-1):
     if profit_history[i] == min:
         min_date = date[i+1]
