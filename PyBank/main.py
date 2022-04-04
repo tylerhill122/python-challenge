@@ -2,6 +2,8 @@ import os
 import csv
 import statistics
 
+from numpy import average
+
 csvpath = os.path.join('Resources', 'budget_data.csv')
 
 # Defining lists to store values
@@ -25,39 +27,34 @@ with open(csvpath) as csvfile:
         date.append(row[0])
         revenue.append(row[1]) 
 
-for i in range(len(revenue)):
-    change = int(revenue[i-1]) + (1 - int(revenue[i]))
+for i in range(len(revenue) - 1):
+    change = int(revenue[i+1]) + (0 - int(revenue[i]))
     profit_history.append(change)
 
-# for i in range(len(revenue)):
-#     c1 = revenue[i]
-#     c2 = revenue[i-1]
-#     change = int(c1) + int(c2)
-#     profit_history.append(change)
-#     c1, c2 = 0, 0
-
-neg_profit = list(filter(lambda profit_history:profit_history<0,profit_history))
-pos_profit = list(filter(lambda profit_history:profit_history>0,profit_history))
-
-profit_change = statistics.mean(pos_profit)+statistics.mean(neg_profit)
-
-total_change = profit_change / len(profit_history)
-
+endtime = (len(revenue)) - 1
 months = len(date)
-total_sum = sum_revenue(revenue)
+
+change = int(revenue[int(endtime)]) - int(revenue[0])
+total_change = change / endtime
+total_change_f = "{:.2f}".format(total_change)
+
 min = min(profit_history)
 max = max(profit_history)
+total_sum = sum_revenue(revenue)
 
-# print(revenue)
-# print(profit_history)
+for i in range(len(profit_history)-1):
+    if profit_history[i] == min:
+        min_date = date[i+1]
+    elif profit_history[i] == max:
+        max_date = date[i+1]
        
 print(
     "------------------------------ \n"
     "Financial Anaylsis \n"
     "------------------------------ \n"
     f'Total Months: {months} \n'
-    f'Total: $ {total_sum} \n'
-    f'Average Change: {total_change} \n'
-    f'Greatest Increase in Profits: $ {max} \n'
-    f'Greatest Decrease in Profits: $ {min} \n'
+    f'Total: ${total_sum} \n'
+    f'Average Change: ${total_change_f} \n'
+    f'Greatest Increase in Profits: {max_date} (${max}) \n'
+    f'Greatest Decrease in Profits: {min_date} (${min}) \n'
     )
